@@ -1,8 +1,6 @@
 # Edlink
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/edlink`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+An API wrapper for [Edlink API](https://ed.link/)
 
 ## Installation
 
@@ -20,15 +18,29 @@ Or install it yourself as:
 
     $ gem install edlink
 
+## Configuration
+
+Add setting with your [Access Token](https://ed.link/docs/user/authentication).
+
+```ruby
+NewsApi::Settings.configure do |config|
+  config.access_token = '<access_token>'
+end
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Each request below returns instance of [ApiStruct::Entity](https://github.com/rubygarage/api_struct#entity)
 
-## Development
+### [Account Profile](https://ed.link/docs/user/people)
+```ruby
+profile = Edlink::User::Profile.index
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### [User Courses](https://ed.link/docs/user/organizations)
+```ruby
+courses = Edlink::User::Courses.index
+```
 
 ## Contributing
 
